@@ -1,0 +1,54 @@
+# Node modules and build directories for React app
+/node_modules/
+/build/
+/dist/
+/public/static/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+/pnpm-debug.log*
+/package-lock.json
+/yarn.lock
+
+# React app environment variable files
+.env
+.env.local
+.env.*.local
+
+# IDE or Editor files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Go files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go module files
+/go.sum
+/go.mod
+
+# Go workspace files
+/.vscode/
+*.log
+
+# Binary files for Go projects
+/bin/
+/obj/
+
+# Build output directories for Go
+/bin/
+/build/
+/out/
