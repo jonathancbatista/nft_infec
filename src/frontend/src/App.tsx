@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Input, Button, Switch, Form, Typography, message, Row, Col } from 'antd';
-import { v4 as uuidv4 } from 'uuid';
+import { Layout, Input, Button, Form, Typography, message, Row, Col } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 const { Title, Text } = Typography;
@@ -8,14 +7,31 @@ const { Title, Text } = Typography;
 interface Question {
   uuid: string;
   question: string;
-  answer: boolean | null;
+  answer: string | null;
 }
 
-const initialQuestions: Question[] = Array.from({ length: 10 }).map((_, index) => ({
-  uuid: uuidv4(),
-  question: `Pergunta ${index + 1}`,
-  answer: null,
-}));
+const initialQuestions: Question[] = [
+  {
+    uuid: "8ef55de1-2323-44b0-98d9-6e18cd69bcf5",
+    question: "Nome do paciente colonizado",
+    answer: null
+  },
+  {
+    uuid: "2b7caa05-58e4-4957-ba13-dc4bfd924331",
+    question: "Numero do prontuário",
+    answer: null
+  },
+  {
+    uuid: "0b80f0a0-72b5-431a-b50f-7072a611ff43",
+    question: "Nome da bactéria",
+    answer: null
+  }
+]
+// const initialQuestions: Question[] = Array.from({ length: 10 }).map((_, index) => ({
+//   uuid: uuidv4(),
+//   question: `Pergunta ${index + 1}`,
+//   answer: null,
+// }));
 
 const App: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -35,7 +51,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleResponseChange = (uuid: string, value: boolean) => {
+  const handleResponseChange = (uuid: string, value: string) => {
     setQuestions(prevQuestions =>
       prevQuestions.map(q => (q.uuid === uuid ? { ...q, answer: value } : q))
     );
@@ -131,11 +147,14 @@ const App: React.FC = () => {
                             <Form.Item
                               label={question.question}
                             >
-                              <Switch
+                              {/* <Switch
                                 checked={question.answer === true}
                                 onChange={(value) => handleResponseChange(question.uuid, value)}
                                 checkedChildren="Sim"
                                 unCheckedChildren="Não"
+                              /> */}
+                              <Input
+                                onChange={(evt) => handleResponseChange(question.uuid, evt.target.value)}
                               />
                             </Form.Item>
                           </Col>

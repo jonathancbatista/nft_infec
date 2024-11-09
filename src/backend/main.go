@@ -14,7 +14,7 @@ import (
 type QuestionAnswer struct {
 	UUID     string `json:"uuid"`
 	Question string `json:"question"`
-	Answer   bool   `json:"answer"`
+	Answer   string `json:"answer"`
 }
 
 type RequestBody struct {
@@ -136,9 +136,8 @@ func updateCheckout(c echo.Context) error {
 		}
 
 		// Find the question by uuid and update checkout time
-		for i, qa := range record.Questions {
+		for _, qa := range record.Questions {
 			if qa.UUID == uuid {
-				record.Questions[i].Answer = true
 				record.CheckOut = &checkOutTime
 				break
 			}
